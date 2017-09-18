@@ -58,7 +58,7 @@ suites:
 verifier:
   name: shell
   remote_exec: false
-  command: pytest -v tests/
+  command: pytest --junit-xml=./junit-full.xml -v tests/
 
 #verifier:
 #  name: shell
