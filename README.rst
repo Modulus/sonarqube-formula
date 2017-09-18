@@ -15,13 +15,15 @@ Available states
 
 .. contents::
 	:local:
+
+
 ``sonarqube``
 -------------
 Downloads the sonarqube application, extracts is and creates a systemd service named in pillar.
 
 
-Testing
---------
+``Testing``
+-----------
 1. Install chefDK
 	- .. _chefDK: https://downloads.chef.io/chefdk
 	- If you get ssl error: gem source -a http://rubygems.org/
