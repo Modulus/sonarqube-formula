@@ -1,0 +1,27 @@
+#TODO: Add support for: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-6.5.zip
+sonarqube:
+  lookup:
+    url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-6.5.zip
+    file_name: sonarqube-6.5.zip
+    hash_url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-6.5.zip.md5
+    connection_string: jdbc:postgresql://192.168.1.115/sonarqube
+    download_location: /var/tmp
+    install_folder: /opt/
+    link_target: /opt/sonarqube-6.5
+    link_folder: /opt/sonarqube
+    user: sonar
+    password: nokograier
+    service: /etc/systemd/system/sonarqube.service
+    service_name: sonarqube
+    source: salt://sonarqube/files/systemd.service
+    install_open_jdk: True
+    jdk:
+      {%- if salt['grains.get']('os_family')|lower  == 'debian' %}
+      package: openjdk-8-jre
+      {% elif salt['grains.get']('os_family')|lower == 'redhat' %}
+      package: java-1.8.0-openjdk
+      {% endif %}
+    jdbc:
+      username: 'sonar'
+      password: 'nokograier'
+      url: 'jdbc:postgresql://localhost/sonar'

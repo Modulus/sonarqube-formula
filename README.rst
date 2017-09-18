@@ -20,3 +20,10 @@ Available states
 Downloads the sonarqube application, extracts is and creates a systemd service named in pillar.
 
 
+Testing
+--------
+1. Install chefDK
+	- .. _chefDK: https://downloads.chef.io/chefdk
+	- If you get ssl error: gem source -a http://rubygems.org/
+2. gem install kitchen-salt kitchen-vagrant
+3. kitchen converge

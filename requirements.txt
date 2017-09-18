@@ -1,0 +1,5 @@
+colorama==0.3.9
+py==1.4.34
+pytest==3.2.2
+six==1.11.0
+testinfra==1.7.0

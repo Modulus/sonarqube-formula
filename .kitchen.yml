@@ -1,0 +1,56 @@
+---
+driver:
+  name: vagrant
+
+platforms:
+  - name: ubuntu-16.04
+
+provisioner:
+  name: salt_solo
+  salt_version: latest
+  salt_install: bootstrap
+  dependencies:
+    - name: postgres
+      repo: git
+      source: https://github.com/saltstack-formulas/postgres-formula.git
+  log_level: info
+  require_chef: false
+  salt_file_root: /srv/salt
+  salt_pillar_root: /srv/pillar
+  formula: sonarqube
+  state_top:
+    base:
+      '*':
+        - postgres.python
+        - postgres.server
+        - postgres.client
+        - postgres.manage
+        - sonarqube
+  pillars-from-files:
+    sonarqube.sls: pillar.example
+    postgres.sls: tests/pillar.postgres
+  pillars:
+    top.sls:
+      base:
+        '*':
+          - postgres
+          - sonarqube
+
+
+suites:
+  - name: default
+# suites:
+#   - name: server
+#     provisioner:
+#       state_top:
+#         base:
+#           '*':
+#             - postgres.python
+#             - postgres.server
+#             - postgres.client
+#             - postgres.manage
+#             - sonarqube
+
+#verifier:
+#  name: shell
+#  command: testinfra -vvv --junit-xml junit-$KITCHEN_INSTANCE.xml test/integration/$KITCHEN_SUITE

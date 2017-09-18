@@ -1,0 +1,16 @@
+[Unit]
+Description=Sonar Qube systemd serice
+After=network.target network-online.target
+Wants=network-online.target
+
+[Service]
+ExecStart={{folder}}/bin/linux-x86-64/sonar.sh start
+ExecStop={{folder}}/bin/linux-x86-64/sonar.sh stop
+ExecReload={{folder}}/bin/linux-x86-64/sonar.sh restart
+PIDFile={{folder}}/bin/linux-x86-64/./SonarQube.pid
+Type=forking
+User={{user}}
+
+
+[Install]
+WantedBy=multi-user.target
