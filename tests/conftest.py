@@ -3,6 +3,8 @@ import os
 import pytest
 import testinfra
 
+# This is from the original repo of kitchen-salt found here: https://github.com/saltstack/kitchen-salt/blob/master/tests/integration/conftest.py
+
 if os.environ.get('KITCHEN_USERNAME') == 'vagrant':
     if 'windows' in os.environ.get('KITCHEN_INSTANCE'):
         test_host = testinfra.get_host('winrm://{KITCHEN_USERNAME}:{KITCHEN_PASSWORD}@{KITCHEN_HOSTNAME}:{KITCHEN_PORT}'.format(**os.environ), no_ssl=True)
