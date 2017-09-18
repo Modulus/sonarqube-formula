@@ -54,3 +54,12 @@ suites:
 #verifier:
 #  name: shell
 #  command: testinfra -vvv --junit-xml junit-$KITCHEN_INSTANCE.xml test/integration/$KITCHEN_SUITE
+
+verifier:
+  name: shell
+  remote_exec: false
+  command: pytest -v tests/
+
+#verifier:
+#  name: shell
+#  command: testinfra -vvv --junit-xml junit-full.xml tests

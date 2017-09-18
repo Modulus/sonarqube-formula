@@ -1,3 +1,5 @@
 .vagrant
 .kitchen
 Gemfile.lock
+.cache
+__pycache__
