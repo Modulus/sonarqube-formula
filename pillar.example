@@ -10,6 +10,7 @@ sonarqube:
     link_target: /opt/sonarqube-6.5
     link_folder: /opt/sonarqube
     user: sonar
+    user_uid: 6666
     password: nokograier
     service: /etc/systemd/system/sonarqube.service
     service_name: sonarqube
