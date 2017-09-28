@@ -6,14 +6,23 @@ postgres:
   version: '9.6'
 
   # These are Debian/Ubuntu specific package names
+  {% if salt['grains.get']('os_family')|lower == 'debian'%}
   pkg: 'postgresql-9.6'
   pkg_client: 'postgresql-client-9.6'
+  pkgs_extra:
+    - postgresql-contrib
+    - postgresql-plpython-9.6
+  {% elif salt['grains.get']('os_family')|lower == 'redhat' %}
+  pkg: 'postgresql96-server'
+  pkg_client: 'postgresql96'
+  pkgs_extra:
+    - postgresql96-contrib
+    - postgresql96-plpython
+  {% endif %}
 
   # Additional packages to install with PostgreSQL server,
   # this should be in a list format
-  pkgs_extra:
-    - postgresql-contrib
-    - postgresql-plpython-9.5
+
 
 
   # Append the lines under this item to your postgresql.conf file.

@@ -1,3 +1,5 @@
+sonarqube_location = "/opt/sonarqube-6.5"
+
 def test_sonar_user_present_in_passwd(host):
     passwd = host.file("/etc/passwd")
 
@@ -22,7 +24,14 @@ def test_sonar_user_present(host):
     assert user.shell == ""
 
 def test_sonar_folders_present(host):
-    folder = host.file("/opt/sonarqube-6.5")
+    folder = host.file(sonarqube_location)
 
     assert folder.exists
     assert folder.is_directory
+
+def test_sonar_symlink_present(host):
+    folder = host.file("/opt/sonarqube/")
+
+    assert folder.exists
+    assert folder.is_symlink
+    assert folder.linked_to == sonarqube_location
