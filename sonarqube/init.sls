@@ -2,10 +2,10 @@
 
 include:
   - sonarqube.user
-  - postgres.python
-  - postgres.server
-  - postgres.client
-  - postgres.manage
+#  - postgres.python
+#  - postgres.server
+#  - postgres.client
+#  - postgres.manage
 
 {% if sonarqube.install_open_jdk is defined and sonarqube.install_open_jdk == True %}
 install java:
@@ -88,8 +88,8 @@ config file:
     - template: jinja
     - user: {{sonarqube.user}}
     - group: {{sonarqube.user}}
-    - require:
-      - sls: sonarqube.user
+    #- require:
+    #  - sls: sonarqube.user
 
 enable and start sonarqube service:
   service.running:

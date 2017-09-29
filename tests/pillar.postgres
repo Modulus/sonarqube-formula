@@ -7,18 +7,18 @@ postgres:
 
   # These are Debian/Ubuntu specific package names
   {% if salt['grains.get']('os_family')|lower == 'debian'%}
-  pkg: 'postgresql-9.6'
-  pkg_client: 'postgresql-client-9.6'
-  pkgs_extra:
-    - postgresql-contrib
-    - postgresql-plpython-9.6
-  {% elif salt['grains.get']('os_family')|lower == 'redhat' %}
-  pkg: 'postgresql96-server'
-  pkg_client: 'postgresql96'
-  pkgs_extra:
-    - postgresql96-contrib
-    - postgresql96-plpython
-  {% endif %}
+  #pkg: 'postgresql-9.6'
+  #pkg_client: 'postgresql-client-9.6'
+  #pkgs_extra:
+  #  - postgresql-contrib
+  #  - postgresql-plpython-9.6
+#  {% elif salt['grains.get']('os_family')|lower == 'redhat' %}
+#  pkg: 'postgresql96-server'
+#  pkg_client: 'postgresql96'
+#  pkgs_extra:
+#    - postgresql96-contrib
+#    - postgresql96-plpython
+#  {% endif %}
 
   # Additional packages to install with PostgreSQL server,
   # this should be in a list format
@@ -54,10 +54,9 @@ postgres:
   # Use ``bake_image`` setting to control how PostgreSQL will be started: if set
   # to ``True`` the raw ``pg_ctl`` will be utilized instead of packaged init
   # script, job or unit run with Salt ``service`` state.
-  bake_image: True
+  #bake_image: True
 
   {%- endif %}
-
   users:
     sonar:
       ensure: present

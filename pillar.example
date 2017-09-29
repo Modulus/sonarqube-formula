@@ -4,7 +4,6 @@ sonarqube:
     url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-6.5.zip
     file_name: sonarqube-6.5.zip
     hash_url: https://sonarsource.bintray.com/Distribution/sonarqube/sonarqube-6.5.zip.md5
-    connection_string: jdbc:postgresql://192.168.1.115/sonarqube
     download_location: /var/tmp
     install_folder: /opt/
     link_target: /opt/sonarqube-6.5
@@ -13,7 +12,7 @@ sonarqube:
     user_uid: 6666
     password: nokograier
     service: /etc/systemd/system/sonarqube.service
-    service_name: sonarqube
+    service_name: sonar
     source: salt://sonarqube/files/systemd.service
     install_open_jdk: True
     jdk:

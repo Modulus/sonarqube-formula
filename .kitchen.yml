@@ -1,10 +1,18 @@
 ---
 driver:
-  name: vagrant
+  name: docker # vagrant
+  binary: /usr/local/bin/docker
+  use_sudo: false
+  privileged: true
+
+# This works, but is way slower than using docker
+#driver:
+#  name: vagrant
 
 platforms:
   - name: ubuntu-16.04
-  - name: centos-7.4
+#  - name: ubuntu-17.04
+#  - name: centos-7.4
 
 provisioner:
   name: salt_solo
@@ -13,10 +21,11 @@ provisioner:
   salt_bootstrap_options: -p git
   dependencies:
     - name: postgres
-      repo: git
-      source: https://github.com/saltstack-formulas/postgres-formula.git
+      path: ../postgres-formula
+      # repo: git
+      #source: https://github.com/saltstack-formulas/postgres-formula.git
   log_level: info
-  require_chef: false
+  #require_chef: false
   salt_file_root: /srv/salt
   salt_pillar_root: /srv/pillar
   formula: sonarqube
