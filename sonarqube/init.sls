@@ -70,8 +70,8 @@ create service file:
   file.managed:
     - name: {{sonarqube.service}}
     - source: {{sonarqube.source}}
-    - user: {{sonarqube.user}}
-    - group: {{sonarqube.user}}
+    - user: root # {{sonarqube.user}}
+    - group: root # {{sonarqube.user}}
     - mode: 774
     - template: jinja
     - context:
@@ -87,9 +87,9 @@ config file:
     - source: salt://sonarqube/files/sonar.properties
     - template: jinja
     - user: {{sonarqube.user}}
-    - group: {{sonarqube.user}}
-    #- require:
-    #  - sls: sonarqube.user
+    - group: root # {{sonarqube.user}}
+    - require:
+      - sls: sonarqube.user
 
 enable and start sonarqube service:
   service.running:
@@ -97,4 +97,4 @@ enable and start sonarqube service:
     - enable: True
     - watch:
       - file: create service file
-      - file: config file
+#      - file: config file

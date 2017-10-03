@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><testsuite errors="0" failures="2" name="pytest" skips="0" tests="11" time="0.888"><testcase classname="tests.test_packages" file="tests/test_packages.py" line="0" name="test_pkg_python" time="0.3679628372192383"></testcase><testcase classname="tests.test_packages" file="tests/test_packages.py" line="5" name="test_pkg_postgres" time="0.013707876205444336"></testcase><testcase classname="tests.test_postgres" file="tests/test_postgres.py" line="3" name="test_postgres_service_enabled_and_running" time="0.03577780723571777"></testcase><testcase classname="tests.test_postgres" file="tests/test_postgres.py" line="9" name="test_postgres_port_and_localhost_active" time="0.012928485870361328"></testcase><testcase classname="tests.test_postgres" file="tests/test_postgres.py" line="22" name="test_postgresql_user_present_in_passwd" time="0.025944948196411133"></testcase><testcase classname="tests.test_postgres" file="tests/test_postgres.py" line="30" name="test_postgresql_user_present" time="0.03320908546447754"></testcase><testcase classname="tests.test_sonar" file="tests/test_sonar.py" line="2" name="test_sonar_user_present_in_passwd" time="0.01632380485534668"></testcase><testcase classname="tests.test_sonar" file="tests/test_sonar.py" line="10" name="test_port_9000_active" time="0.0057239532470703125"></testcase><testcase classname="tests.test_sonar" file="tests/test_sonar.py" line="15" name="test_sonar_user_present" time="0.0062677860260009766"><failure message="assert 998 == 6666
+ +  where 998 = &lt;user sonar&gt;.uid">host = &lt;testinfra.host.Host object at 0x108778d68&gt;
+
+    def test_sonar_user_present(host):
+        user = host.user(&quot;sonar&quot;)
+    
+&gt;       assert user.uid == 6666
+E       assert 998 == 6666
+E        +  where 998 = &lt;user sonar&gt;.uid
+
+tests/test_sonar.py:19: AssertionError</failure></testcase><testcase classname="tests.test_sonar" file="tests/test_sonar.py" line="25" name="test_sonar_folders_present" time="0.00868368148803711"></testcase><testcase classname="tests.test_sonar" file="tests/test_sonar.py" line="31" name="test_sonar_symlink_present" time="0.007050752639770508"><failure message="assert False
+ +  where False = &lt;file /opt/sonarqube/&gt;.is_symlink">host = &lt;testinfra.host.Host object at 0x108778d68&gt;
+
+    def test_sonar_symlink_present(host):
+        folder = host.file(&quot;/opt/sonarqube/&quot;)
+    
+        assert folder.exists
+&gt;       assert folder.is_symlink
+E       assert False
+E        +  where False = &lt;file /opt/sonarqube/&gt;.is_symlink
+
+tests/test_sonar.py:36: AssertionError</failure></testcase></testsuite>

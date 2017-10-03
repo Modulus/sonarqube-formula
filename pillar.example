@@ -12,7 +12,7 @@ sonarqube:
     user_uid: 6666
     password: nokograier
     service: /etc/systemd/system/sonarqube.service
-    service_name: sonar
+    service_name: sonarqube
     source: salt://sonarqube/files/systemd.service
     install_open_jdk: True
     jdk:
