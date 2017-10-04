@@ -30,7 +30,7 @@ def test_sonar_folders_present(host):
     assert folder.is_directory
 
 def test_sonar_symlink_present(host):
-    folder = host.file("/opt/sonarqube/")
+    folder = host.file("/opt/sonarqube")
 
     assert folder.exists
     assert folder.is_symlink
